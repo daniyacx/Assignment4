@@ -52,4 +52,34 @@ public class MyHashTable<K, V> {
         chainArray[index] = newNode;
         size++;
     }
+    public V get(K key) {
+        int index = hash(key);
+        HashNode<K, V> node = chainArray[index];
+        while (node != null) {
+            if (node.key.equals(key)) {
+                return node.value;
+            }
+            node = node.next;
+        }
+        return null;
+    }
+    public V remove(K key) {
+        int index = hash(key);
+        HashNode<K, V> prev = null;
+        HashNode<K, V> curr = chainArray[index];
+        while (curr != null) {
+            if (curr.key.equals(key)) {
+                if (prev == null) {
+                    chainArray[index] = curr.next;
+                } else {
+                    prev.next = curr.next;
+                }
+                size--;
+                return curr.value;
+            }
+            prev = curr;
+            curr = curr.next;
+        }
+        return null;
+    }
 }
