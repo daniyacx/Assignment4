@@ -6,11 +6,13 @@ public class MyTestingClass {
     private int x;
     private float y;
     private String z;
+
     public MyTestingClass(int x, float y, String z) {
         this.x = x;
         this.y = y;
         this.z = z;
     }
+    // Override the hashCode method to generate a hash code based on the object's fields
     @Override
     public int hashCode() {
         int hash = 3;
@@ -24,9 +26,8 @@ public class MyTestingClass {
         hash = hash * 13 + a;
         return hash;
     }
-
     Random random = new Random();
-
+    // Add 10,000 random students to the hash table
     public void put10000() {
         for (int i = 0; i < 10000; i++) {
             int group = random.nextInt(5000);
@@ -37,6 +38,7 @@ public class MyTestingClass {
             hashTable.put(Key, newbie);
         }
     }
+    // Test the hash table by adding and removing a few elements
     public void putTest() {
         hashTable.put(1, "daniya");
         hashTable.put(2, "alua");
@@ -48,6 +50,7 @@ public class MyTestingClass {
         System.out.println(hashTable.remove(3));
         System.out.println(hashTable.get(3));
     }
+    // Print the number of elements in each bucket of the hash table
     public void bucketTest() {
         int[] bucketSizes = hashTable.getBucketSizes();
         for (int i = 0; i < bucketSizes.length; i++) {
