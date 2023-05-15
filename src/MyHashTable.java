@@ -37,4 +37,19 @@ public class MyHashTable<K, V> {
         }
         return index;
     }
+    public void put(K key, V value) {
+        int index = hash(key);
+        HashNode<K, V> node = chainArray[index];
+        while (node != null) {
+            if (node.key.equals(key)) {
+                node.value = value;
+                return;
+            }
+            node = node.next;
+        }
+        HashNode<K, V> newNode = new HashNode<>(key, value);
+        newNode.next = chainArray[index];
+        chainArray[index] = newNode;
+        size++;
+    }
 }
