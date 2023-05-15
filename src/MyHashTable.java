@@ -29,4 +29,12 @@ public class MyHashTable<K, V> {
         this.size = 0;
         this.M = M;
     }
+    private int hash(K key) {
+        int hashCode = key.hashCode();
+        int index = hashCode % M;
+        if (index < 0) {
+            index += M;
+        }
+        return index;
+    }
 }
