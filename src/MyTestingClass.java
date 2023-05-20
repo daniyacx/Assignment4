@@ -49,6 +49,8 @@ public class MyTestingClass {
         System.out.println(hashTable.getKey("alua"));
         System.out.println(hashTable.remove(3));
         System.out.println(hashTable.get(3));
+        hashTable.update_record("daniya","Daniya");
+        System.out.println(hashTable.get(1));
     }
     // Print the number of elements in each bucket of the hash table
     public void bucketTest() {
